@@ -4,30 +4,39 @@
 		<meta charset="utf-8">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Connect Four</title>
+		<title>XOXO</title>
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="author" href="humans.txt">
 	</head>
-	<body>
+	<body id="game">
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<h1 id="message"></h1>
+				<button id="resetBtn">Play Again</button>
+				<button id="restartBtn">Start Over</button>
+			</div>
+		</div>
 		<div id="overlay">
 			<div class="container">
-				<h2>Tic - Tac - Toe</h2>
+				<h1>Tic - Tac - Toe</h1>
 				<form id="signUp" name="signUp">
 					<div class="form-group">
-					<h2>Player 1</h2>
-						<input type="text" name="name1" placeholder="Name">
-						<input type="text" name="color1" placeholder="Color">
+						<h2 id="title1">Player 1</h2>
+						<input type="text" name="name1" placeholder="Name" onkeyup="updateName(this.value, 'title1')">
+						<input type="text" name="color1" class="color" placeholder="Color" onchange="updateColor(this.value, 'title1')">
 					</div>
 					<div class="form-group">
-					<h2>Player 2</h2>
-						<input type="text" name="name2" placeholder="Name">
-						<input type="text" name="color2" placeholder="Color">
+						<h2 id="title2">Player 2</h2>
+						<input type="text" name="name2" placeholder="Name" onkeyup="updateName(this.value, 'title2')">
+						<input type="text" name="color2" class="color" placeholder="Color" onchange="updateColor(this.value, 'title2')">
 					</div>
-					<input type="submit" value="Start Game"/>
+					<button type="submit">Start Game</button>
 				</form>
 			</div>
 		</div>
 		<div class="board">
+			<h1 id="upNext"></h1>
 			<ul>
 				<li class="cell" data="A1"></li>
 				<li class="cell" data="A2"></li>

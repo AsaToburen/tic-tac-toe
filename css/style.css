@@ -1,69 +1,194 @@
 
-/* reset */
+/* reset || base-styles */
 body, div, ul, li {
 	margin: 0;
-	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
+	color: #fff;
 	vertical-align: baseline;
+	font: inherit;
+	font-size: 100%;
+	font-family: 'Lato', sans-serif;
+}
+body{
+	overflow-y: hidden;
+	max-height: 100vh;
+	background-color: rgb(52, 73, 94);
+}
+h1 {
+	margin: 2em 0;
+	text-transform: uppercase;
+}
+h2 {
+	margin: 2em auto 1em auto;
+	padding: .25em;
+	max-width: 250px;
+	background-color: rgba(135,150,157,.35);
+	font-size: 1.2em;
+}
+button {
+	margin-top: 2.5em;
+	padding: .5em;
+	border: none;
+	background-color: rgba(135,150,157,.35);
+	color: #dedede;
+	font-size: 24px;
+	font-family: 'Lato', sans-serif;
+	cursor: pointer;
+}
+ button:hover {
+	background-color: rgba(135,150,157,.7);
 }
 
-/*body {
-	
-}
-*/
-#overlay {
-	width: 100%;
-	background-color: #dedede;
+.modal {
 	position: absolute;
-	height: 100%;
-	padding-top: 100px;
+	top: -30em;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	padding: 2em;
+	width: 55%;
+	border: 2px solid #ffd700;
+	background: rgb(52, 73, 94);
+	text-align: center;
 	transition: top 1s linear;
-	top: 0vh;
+}
+.modal.show {
+	top: 14.5em;
+
+}
+.modal .modal-content {
+	border-top: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+}
+.modal .modal-content h1 {
+	margin-bottom: 1.5em;
+	color: #ffd700;
+}
+.modal .modal-content button {
+	margin-top: 0;
+	margin-bottom: 1em;
 }
 
+/* overlay */
+
+#overlay {
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	padding-top: 2em;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(52, 73, 94);
+	transition: top 1s linear;
+}
 #overlay.hide {
 	top: -100vh;
 	padding: 0;
 }
-
 #overlay .container {
-	width: 50%;
 	margin: 0 auto;
 	text-align: center;
 }
-
+#overlay .container .form-group {
+	height: 80px;
+}
 #overlay .container form {
 	font-size: 24px;
 }
 #overlay .container form input {
-	font-size: 18px;
 	padding: 7px;
+	font-size: 18px;
 }
 #overlay .container form input[type="submit"] {
 	margin-top: 40px;
+	padding: 1em;
 }
 
 .board {
-	padding-top: 100px;
-	width: 30%;
-	margin: auto;
+  margin: 0 auto;
+  padding-top: 60px;
+  width: 80vh;
+  height: 65vh;
+}
+.board  > h1 {
+	margin: 0 0 1.5em 0;
+	height: 40px;
+	text-align: center;
 }
 
 ul {
+	margin-bottom: 2px;
+	padding: 0;
+	width: 100%;
+	height: 33%;
 	list-style-type: none;
 }
-
-div.row {
-	display: flex;
-	height: 150px;
+.cell {
+	position: relative;
+	display: inline-block;
+	width: 32.5%;
+	height: 100%;
+	background-color: #dedede;
+	color: rgb(52, 73, 94);
+}
+.cell:before {
+	float: left;
+	padding-top: 100%;
+	content: '';
+}
+.cell span {
+	position: absolute;
+	top: 15%;
+	width: 100%;
+	text-align: center;
+	font-size: 6em;
 }
 
-li.cell {
-	display: inline-flex;
-	width: 150px;
-	height: 150px;
-	border: 2px solid #dedede;
-	vertical-align: top;
-} 
+@media only screen and (max-width: 641px) {
+	#overlay .container form input {
+		width: 40%;
+		font-size: 14px;
+	}
+	.board {
+		width: 45vh;
+		height: 45vh;
+	}
+	.modal{
+		width: 75%;
+	}
+	.modal.show {
+		top: 10.5em;
+	}
+	.modal h1 {
+		font-size: 1.25em;
+	}
+	.modal button {
+		font-size: 1em;
+	}
+	.cell span {
+		font-size: 4em;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.modal {
+		width: 55%;
+	}
+}
+@media only screen and (min-width: 1024px) {
+	.modal {
+		width: 42%;
+	}
+	.modal.show {
+		top: 13.5em;
+	}
+}
+@media only screen and (min-width: 1440px) {
+	.modal {
+		width: 32%;
+	}
+	.modal.show {
+		top: 17.5em;
+	}
+}
